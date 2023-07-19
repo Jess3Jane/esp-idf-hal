@@ -33,15 +33,27 @@ impl embedded_hal::delay::DelayUs for Delay {
     }
 }
 
+impl embedded_hal_0_2::blocking::delay::DelayUs<u8> for Delay {
+    fn delay_us(&mut self, us: u8) {
+        Delay::delay_us(us as _)
+    }
+}
+
 impl embedded_hal_0_2::blocking::delay::DelayUs<u16> for Delay {
     fn delay_us(&mut self, us: u16) {
-        Delay::delay_us(us as _);
+        Delay::delay_us(us as _)
     }
 }
 
 impl embedded_hal_0_2::blocking::delay::DelayUs<u32> for Delay {
     fn delay_us(&mut self, us: u32) {
-        Delay::delay_us(us);
+        Delay::delay_us(us)
+    }
+}
+
+impl embedded_hal_0_2::blocking::delay::DelayMs<u8> for Delay {
+    fn delay_ms(&mut self, ms: u8) {
+        Delay::delay_ms(ms as _)
     }
 }
 
